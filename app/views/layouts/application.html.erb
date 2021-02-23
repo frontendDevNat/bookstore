@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookstore</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class='<%= controller.controller_name %>'>
+    <div id="banner">
+      <%= image_tag 'logo.png', alt: 'The Pragmatic Bookshelf' %>
+       <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Questions</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      <span class="title"><%= @page_title %></span>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <div id="cart">
+          <% if @cart %>
+            <%= render @cart %>
+          <% end %>
+        </div>
+       
+      </div>
+      <div id="main">
+      <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

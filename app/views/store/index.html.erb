@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<h1>Catalog</h1>
+<% cache @products do %>
+  <% @products.each do |product| %>
+    <% cache product do %>
+      <div class="entry">
+        <%= image_tag(product.image_url) %>
+        <div class="flex_item">
+        <h3><%= product.title %></h3>
+        <%= sanitize(product.description) %>
+        <div class="price_line">
+          <span class="price">price: <%= number_to_currency(product.price) %></span>
+          <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+        </div>
+        </div>
+      </div>
+      <% end %>
+  <% end %>
+<% end %>
